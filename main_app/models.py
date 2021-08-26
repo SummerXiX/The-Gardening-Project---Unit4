@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Plant(models.Model):
@@ -10,4 +11,4 @@ class Plant(models.Model):
     return str(self.type)
 
   def get_absolute_url(self):
-    return reverse('plants_details', kwargs={'finch_id': self.id})
+    return reverse('plants_details', kwargs={'plant_id': self.id})

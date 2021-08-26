@@ -29,7 +29,7 @@ def plants_details(request, plant_id):
     # "toys": toys_finch_doesnt_have
   })
 
-class PlantCreate( CreateView):
+class PlantCreate(CreateView):
   model = Plant
   fields = ['type', 'description', 'time']
 
@@ -43,7 +43,7 @@ class PlantUpdate(UpdateView):
 
 class PlantDelete(DeleteView):
   model = Plant
-  fields = ['type', 'description', 'time']
+  success_url='/plants/'
 
 
 
