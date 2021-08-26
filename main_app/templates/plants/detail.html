@@ -21,32 +21,30 @@
 {% block content %}
 
 <section class="cat-container">
-    <div class="plant-img">
-    {% comment %} <img 
-    src="" 
-    alt=""> {% endcomment %}
 
+    <div class="plant-img">
     </div>
-    <divclass="plant-details">
+    <div class="plant-details">
         <h1>{{plant.type}}</h1>
-        {% comment %} {% if finch.age > 0 %}
-    <h2>A {{ finch.age }} year old {{ finch.breed }}</h2>
-    {% else %}
-    <h2>A {{ finch.breed }} kitten.</h2>
-    {% endif %} {% endcomment %}
     <p>{{ plant.description }}</p>
     <div class="plant-actions">
       <a href="{% url 'plants_update' plant.id %}" class="btn warn">Edit</a>
       <a href="{% url 'plants_delete' plant.id %}" class="btn danger">Delete</a>
     </div>
-    <h3>Change {{ finch.name }}'s photo</h3>
+    <h2>Change {{ plant.type }}'s photo</h2>
     <p id="file-name"></p>
     <form 
-      action="{% url 'add_photo' finch.id %}"
+      action="{% url 'add_photo' plant.id %}"
       enctype="multipart/form-data"
       method="POST"
     >
-
+    {% csrf_token %}
+      <label class="btn secondary">
+        Choose photo
+        <input type="file" name="photo-file" id="file-input">
+      </label>
+      <button type="submit" class="btn submit">Upload Photo</button>
+    </form>
 </section>
 
 <div class="caring-container">
@@ -55,49 +53,30 @@
       <h2>Gardening</h2>
     </div>
     <h3>Add a Session</h3>
-    <form 
+        <form 
       action="{% url 'add_caring' plant.id %}"
       method="post"
       class="subsection-section"
     >
-      {% comment %} {% if finch.fed_for_today %}
-        <p class="fed">{{ finch.name }} has been fed all their meals for today!</p>
-      {% else %}
-        <p class="unfed">{{ finch.name }} might be hungry!</p>
-      {% endif %}
-      {% csrf_token %}
-      {{ feeding_form.as_p }} {% endcomment %}
-      <button type="submit" class="btn submit">Add Feeding</button>
-    </form>
-      {% comment %} <img 
-        src="{% static 'images/cat-cone.svg' %}" 
-        alt="An ice cream cone cat"
-      />
-      <img 
-        src="{% static 'images/cat-onigiri.svg' %}"
-        alt="A cat as onigiri"
-      />
-      <img 
-        src="{% static 'images/kitty-kabob.svg' %}" 
-        alt="A kabob of kittens"
-      /> {% endcomment %}
-    </div>
-    <table>
-      <thead>
-        <tr><th>Date</th><th>Gardening</th></tr>
-      </thead>
-      <tbody>
-        {% for carings in plant.caring_set.all %}
-          <tr>
-            <td>{{caring.date}}</td>
-            <td>{{caring.get_care_display}}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </section>
-</div>
-
+    <h3>Past Sessions</h3>
+    {% if plant.caring_set.all.count %}
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Session</th></tr>
+        </thead>
+        <tbody>
+          {% for caring in plant.caring_set.all %}
+            <tr>
+              <td>{{caring.date}}</td>
+              <td>{{caring.get_care_display}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="subsection-content">{{plant.name}} has never been taken care of</p>
+    {% endif %}
+    </section>
 {% endblock  %}
 
 
