@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.views.generic import ListView, DetailView
 # from django.contrib.auth.views import LoginView
@@ -7,6 +7,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Plant
+from .forms import CaringForm
 
 # Create your views here.
 def home(request):
@@ -22,7 +23,7 @@ def plants_index(request):
 # @login_required
 def plants_details(request, plant_id):
   plant = Plant.objects.get(id=plant_id)
-  # feeding_form = FeedingForm()
+  # caring_form = CaringForm()
   return render(request, "plants/detail.html", { 
     "plant": plant, 
     # "feeding_form": feeding_form,
@@ -44,6 +45,16 @@ class PlantUpdate(UpdateView):
 class PlantDelete(DeleteView):
   model = Plant
   success_url='/plants/'
+
+def add_caring(request, plant_id):
+  form = CaringForm(request.POST)
+
+  if form.is_valid():
+    new_caring = form.save(commit=False)
+    new_caring.plant_id = plant_id
+    new_caring.save()
+  return redirect('plants_details', plant_id=plant_id)
+  
 
 
 

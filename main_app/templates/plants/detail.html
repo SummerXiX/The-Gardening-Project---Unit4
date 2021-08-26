@@ -3,11 +3,21 @@
 
 {% block head %}
 <link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<link 
   rel="stylesheet" 
   type="text/css" 
   href="{% static 'css/finch-detail.css' %}"
 />
+<script defer src="{% static 'js/plant-detail.js' %}"></script>
 {% endblock %}
+
 {% block content %}
 
 <section class="cat-container">
@@ -43,6 +53,22 @@
   <section class="carings">
     <div class="subsection-title">
       <h2>Gardening</h2>
+    </div>
+    <h3>Add a Session</h3>
+    <form 
+      action="{% url 'add_caring' plant.id %}"
+      method="post"
+      class="subsection-section"
+    >
+      {% comment %} {% if finch.fed_for_today %}
+        <p class="fed">{{ finch.name }} has been fed all their meals for today!</p>
+      {% else %}
+        <p class="unfed">{{ finch.name }} might be hungry!</p>
+      {% endif %}
+      {% csrf_token %}
+      {{ feeding_form.as_p }} {% endcomment %}
+      <button type="submit" class="btn submit">Add Feeding</button>
+    </form>
       {% comment %} <img 
         src="{% static 'images/cat-cone.svg' %}" 
         alt="An ice cream cone cat"
