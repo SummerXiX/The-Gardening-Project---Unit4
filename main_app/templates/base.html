@@ -13,17 +13,17 @@
 </head>
 <body>
     <header>
-        <div>
-            <a href="/">
+        <div class="header-logo-container">
+            <a href="{% url 'plants_index' %}"">
             <img src="" alt="A logo">
             </a>
         </div>
         <nav>
             <ul>
                 <li><a href="/about">About</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/Plants">Plants</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="{% url 'plants_index' %}">Plants</a></li>
+                <li><a href="{% url 'plants_create' %}">Add a Plant</a></li>
+                <li><a href="{% url 'about' %}"">About</a></li>
             </ul>
         </nav>
     </header>
