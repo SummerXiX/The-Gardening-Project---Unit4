@@ -4,4 +4,4 @@ from .models import Gardening
 class CaringForm(ModelForm):
   class Meta:
     model = Gardening
-    fields = ['date', 'caring']
+    fields = ['date', 'care']
