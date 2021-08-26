@@ -20,7 +20,7 @@ class Plant(models.Model):
     return reverse('plants_details', kwargs={'plant_id': self.id})
     
 class Gardening(models.Model):
-  date = models.DateField()
+  date = models.DateField('Gardening Date')
   care = models.CharField(max_length=1,
     choices=CARES,
     default=CARES[0][0]

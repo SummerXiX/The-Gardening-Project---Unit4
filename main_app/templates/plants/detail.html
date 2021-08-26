@@ -39,6 +39,39 @@
 
 </section>
 
+<div class="caring-container">
+  <section class="carings">
+    <div class="subsection-title">
+      <h2>Gardening</h2>
+      {% comment %} <img 
+        src="{% static 'images/cat-cone.svg' %}" 
+        alt="An ice cream cone cat"
+      />
+      <img 
+        src="{% static 'images/cat-onigiri.svg' %}"
+        alt="A cat as onigiri"
+      />
+      <img 
+        src="{% static 'images/kitty-kabob.svg' %}" 
+        alt="A kabob of kittens"
+      /> {% endcomment %}
+    </div>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Gardening</th></tr>
+      </thead>
+      <tbody>
+        {% for carings in plant.caring_set.all %}
+          <tr>
+            <td>{{caring.date}}</td>
+            <td>{{caring.get_care_display}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+
 {% endblock  %}
 
 
