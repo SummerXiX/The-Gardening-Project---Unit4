@@ -19,13 +19,18 @@
             </a>
         </div>
         <nav>
-            <ul>
-                <li><a href="/about">About</a></li>
-                <li><a href="{% url 'plants_index' %}">Plants</a></li>
-                <li><a href="{% url 'plants_create' %}">Add a Plant</a></li>
-                <li><a href="{% url 'about' %}"">About</a></li>
-            </ul>
-        </nav>
+        <ul>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'plants_index' %}">All Plants</a></li>
+            <li><a href="{% url 'plants_create' %}">Add a Plant</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'logout' %}">Log out</a></li>
+          {% else %}
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'home' %}">Login</a></li>
+          {% endif %}
+        </ul>
+      </nav>
     </header>
     <main>
     
