@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.views.generic import ListView, DetailView
-# from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView
 # from django.contrib.auth import login
 # from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.decorators import login_required
@@ -15,8 +15,8 @@ S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
 BUCKET = 'thegardeningproject2'
 
 # Create your views here.
-def home(request):
-  return render(request, 'home.html')
+class Home(LonginView):
+  template_name='home_html'
 
 def about(request):
     return render(request, 'about.html')
