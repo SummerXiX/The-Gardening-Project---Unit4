@@ -6,8 +6,13 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Plant
+from .models import Plant, Photo
 from .forms import CaringForm
+import uuid
+import boto3
+
+S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
+BUCKET = 'thegardeningproject2'
 
 # Create your views here.
 def home(request):
@@ -56,7 +61,22 @@ def add_caring(request, plant_id):
   return redirect('plants_details', plant_id=plant_id)
   
 
-
+def add_photo(request, plant_id):
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    key = uuid.uuid4().hex + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      s3.upload_fileobj(photo_file, BUCKET, key)
+      url = f"{S3_BASE_URL}{BUCKET}/{key}"
+      photo = Photo(url=url, plant_id=plant_id)
+      plant_photo = Photo.objects.filter(plant_id=plant_id)
+      if plant_photo.first():
+        plant_photo.first().delete()
+      photo.save()
+    except Exception as err:
+      print("An error occurred uploading the file: %s" % err)
+  return redirect("plants_details", plant_id=plant_id)
 
 
 
