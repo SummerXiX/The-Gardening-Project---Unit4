@@ -4,8 +4,8 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-# from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Plant, Photo
 from .forms import CaringForm
 import uuid
@@ -21,11 +21,12 @@ class Home(LonginView):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def plants_index(request):
   plants= Plant.objects.filter(user=request.user)
   return render(request, 'plants/index.html', { 'plants': plants })
 
-# @login_required
+@login_required
 def plants_details(request, plant_id):
   plant = Plant.objects.get(id=plant_id)
   # caring_form = CaringForm()
@@ -35,7 +36,7 @@ def plants_details(request, plant_id):
     # "toys": toys_finch_doesnt_have
   })
 
-class PlantCreate(CreateView):
+class PlantCreate(LoginRequiredMixin, CreateView):
   model = Plant
   fields = ['type', 'description', 'time']
 
@@ -43,14 +44,15 @@ class PlantCreate(CreateView):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
-class PlantUpdate(UpdateView):
+class PlantUpdate(LoginRequiredMixin, UpdateView):
   model = Plant
   fields = ['type', 'description', 'time']
 
-class PlantDelete(DeleteView):
+class PlantDelete(LoginRequiredMixin, DeleteView):
   model = Plant
   success_url='/plants/'
 
+@login_required
 def add_caring(request, plant_id):
   form = CaringForm(request.POST)
 
@@ -60,7 +62,7 @@ def add_caring(request, plant_id):
     new_caring.save()
   return redirect('plants_details', plant_id=plant_id)
   
-
+@login_required
 def add_photo(request, plant_id):
   photo_file = request.FILES.get('photo-file', None)
   if photo_file:
