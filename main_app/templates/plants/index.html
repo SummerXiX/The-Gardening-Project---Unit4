@@ -21,11 +21,19 @@
       <a href="{% url 'plants_details' plant.id %}">
       <div class="card-content">
         <div class="card-img-container">
-          {% comment %} <img 
-            src="{% static 'images/sk8r-boi-plant.svg' %}" 
-            alt="A skater boy plant"
-          > {% endcomment %}
-        </div>
+          {% if plant.photo.url %}
+          <img 
+            src="{{plant.photo.url}}" 
+            alt="A photo of {{plant.name}}"
+            class="usr-img"
+          >
+          {% else %}
+         <img 
+            src="{% static 'images/sk8r-boi-cat.svg' %}" 
+            alt="A picture"
+          >
+    {% endif %}
+  </div>
         <h2 class="card-title">{{ plant.type }}</h2>
         {% if plant.time > 0 %}
           <p>A {{ plant.time }} year old {{ plant.type }}</p>
