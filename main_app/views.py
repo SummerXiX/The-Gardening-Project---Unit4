@@ -15,8 +15,8 @@ S3_BASE_URL = "https://s3.us-east-2.amazonaws.com/"
 BUCKET = 'thegardeningproject2'
 
 # Create your views here.
-class Home(LonginView):
-  template_name='home_html'
+class Home(LoginView):
+  template_name='home.html'
 
 def about(request):
     return render(request, 'about.html')
@@ -32,8 +32,7 @@ def plants_details(request, plant_id):
   # caring_form = CaringForm()
   return render(request, "plants/detail.html", { 
     "plant": plant, 
-    # "feeding_form": feeding_form,
-    # "toys": toys_finch_doesnt_have
+    # "caring_form": caring_form
   })
 
 class PlantCreate(LoginRequiredMixin, CreateView):

@@ -17,8 +17,6 @@
   /> {% endcomment %}
 </section>
 
-{% endblock %}
-
 {% if not user.is_authenticated %}
 <section>
   <form action="{% url 'login' %}" method="post" class="login">
