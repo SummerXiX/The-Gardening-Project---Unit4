@@ -22,7 +22,7 @@ def about(request):
     return render(request, 'about.html')
 
 def plants_index(request):
-  plants= Plant.objects.all()
+  plants= Plant.objects.filter(user=request.user)
   return render(request, 'plants/index.html', { 'plants': plants })
 
 # @login_required
