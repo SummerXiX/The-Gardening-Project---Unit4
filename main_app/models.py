@@ -11,9 +11,9 @@ CARES = (
 )
 
 class Plant(models.Model):
-  type = models.CharField(max_length=100)
-  description = models.TextField(max_length=250)
-  time = models.IntegerField()
+  type = models.CharField(max_length=100, verbose_name="Plant Type")
+  description = models.TextField(max_length=250, verbose_name="Plant Care Instructions")
+  time = models.IntegerField(verbose_name="Years Since Planted/Bought")
   user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def __str__(self):
@@ -38,7 +38,7 @@ class Gardening(models.Model):
 
 class Photo(models.Model):
   url = models.CharField(max_length=250)
-  cat = models.OneToOneField(Plant, on_delete=models.CASCADE)
+  plant = models.OneToOneField(Plant, on_delete=models.CASCADE)
 
   def __str__(self):
     return f"Photo for plant_id: {self.plant_id} @{self.url}"

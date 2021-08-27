@@ -29,10 +29,10 @@ def plants_index(request):
 @login_required
 def plants_details(request, plant_id):
   plant = Plant.objects.get(id=plant_id)
-  # caring_form = CaringForm()
+  caring_form = CaringForm()
   return render(request, "plants/detail.html", { 
     "plant": plant, 
-    # "caring_form": caring_form
+  "caring_form": caring_form
   })
 
 class PlantCreate(LoginRequiredMixin, CreateView):

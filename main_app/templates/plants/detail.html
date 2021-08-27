@@ -13,7 +13,7 @@
 <link 
   rel="stylesheet" 
   type="text/css" 
-  href="{% static 'css/finch-detail.css' %}"
+  href="{% static 'css/plant-detail.css' %}"
 />
 <script defer src="{% static 'js/plant-detail.js' %}"></script>
 {% endblock %}
@@ -23,11 +23,11 @@
 <section class="plant-container">
     <div class="plant-img">
     {% if plant.photo.url %}
-      {% comment %} <img 
-        src="{{cat.photo.url}}" 
-        alt="A photo of {{cat.name}}"
+      <img 
+        src="{{plant.photo.url}}" 
+        alt="A photo of {{plant.type}}"
         class="usr-img"
-      > {% endcomment %}
+      > 
     {% else %}
       {% comment %} <img 
         src="{% static 'images/sk8r-boi-cat.svg' %}" 
@@ -65,12 +65,20 @@
       <h2>Gardening</h2>
     </div>
     <h3>Add a Session</h3>
-        <form 
+    <form 
       action="{% url 'add_caring' plant.id %}"
       method="post"
       class="subsection-section"
     >
-    <h3>Past Sessions</h3>
+    {% if plant.cared_for_today %}
+        <p class="cared">{{ plant.type}} has been taken care of today!</p>
+      {% else %}
+        <p class="uncared">show {{ plant.type }} some love</p>
+      {% endif %}
+      {% csrf_token %}
+      {{ caring_form.as_p }}
+      <button type="submit" class="btn submit">Add a Session</button>
+    </form>
     {% if plant.caring_set.all.count %}
       <table>
         <thead>
@@ -86,7 +94,7 @@
         </tbody>
       </table>
     {% else %}
-      <p class="subsection-content">{{plant.name}} has never been taken care of</p>
+      <p class="subsection-content">{{plant.type}} has never been taken care of</p>
     {% endif %}
     </section>
 {% endblock  %}
