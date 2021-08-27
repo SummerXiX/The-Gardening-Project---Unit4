@@ -86,7 +86,7 @@ def signup(request):
       if form.is_valid():
         user = form.save()
         login(request, user)
-        return redirect('cats_index')
+        return redirect('plants_index')
       else:
         error_message = "Invalid signup - try again"
     form = UserCreationForm()
