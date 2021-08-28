@@ -1,5 +1,5 @@
 nav {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 main {
@@ -23,24 +23,17 @@ main > section {
   display: none;
 }
 
-.logo-container {
-  max-width: 450px;
-}
-
-.cat-container {
-  width: 80%;
-}
-
 .login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 80%;
+  border-color: rgb(3,237,195);
 }
 
 .login h1 {
-  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
   margin: 10px 0 16px 0;
 }
 
@@ -51,7 +44,7 @@ main > section {
 }
 
 .login label {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 8px;
 }
 
@@ -77,13 +70,9 @@ main > section {
   }
 
   .login {
-    border: rgb(36, 116, 248) solid 2px;
+    border: black solid 2px;
     padding: 20px;
     border-radius: 6px;
-  }
-
-  .logo-container {
-    max-width: 520px;
   }
 }
 
