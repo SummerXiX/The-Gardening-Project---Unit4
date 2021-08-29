@@ -28,13 +28,15 @@
               >
             {% else %}
               <img 
-                src="{% static 'images/place-holder.svg' %}" 
+                src="{% static 'images/background-img3.png' %}" 
                 alt="A place-holder"
+                width="200" 
+                height="200"
               >
             {% endif %}
           </div>
           <h2 class="card-title">{{ plant.type }}</h2>
-            <p>A Plant Baby</p>
+            <p>A Member Since {{ plant.time}} Years Ago</p>
           <p><small>Click to view care instructions</small></p>
         </div>
       </a>
