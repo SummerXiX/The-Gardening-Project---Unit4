@@ -27,18 +27,22 @@
         src="{{plant.photo.url}}" 
         alt="A photo of {{plant.type}}"
         class="usr-img"
+        width="200" 
+        height="200"
       > 
     {% else %}
-      {% comment %} <img 
-        src="{% static 'images/sk8r-boi-cat.svg' %}" 
-        alt="A skater boy cat"
-      > {% endcomment %}
+       <img 
+        src="{% static 'images/background-img2.png' %}" 
+        alt="A placeholder img"
+        width="200" 
+        height="200"
+      > 
     {% endif %}
   </div>
     </div>
     <div class="plant-details">
         <h1>{{plant.type}}</h1>
-    <p>{{ plant.description }}</p>
+    <h2>{{ plant.description }}</h2>
     <div class="plant-actions">
       <a href="{% url 'plants_update' plant.id %}" class="btn warn">Edit</a>
       <a href="{% url 'plants_delete' plant.id %}" class="btn danger">Delete</a>
@@ -62,7 +66,7 @@
 <div class="caring-container">
   <section class="carings">
     <div class="subsection-title">
-      <h2>Gardening</h2>
+      <h2>Gardening Sessions</h2>
     </div>
     <h3>Add a Session</h3>
     <form 
@@ -73,7 +77,7 @@
     {% if plant.cared_for_today %}
         <p class="cared">{{ plant.type}} has been taken care of today!</p>
       {% else %}
-        <p class="uncared">show {{ plant.type }} some love</p>
+        <p class="uncared">Show {{ plant.type }} Some Love <3</p>
       {% endif %}
       {% csrf_token %}
       {{ caring_form.as_p }}
@@ -94,7 +98,7 @@
         </tbody>
       </table>
     {% else %}
-      <p class="subsection-content">{{plant.type}} has never been taken care of</p>
+      <p class="subsection-content">{{plant.type}} Has Not Been Taken Care Of :(</p>
     {% endif %}
     </section>
 {% endblock  %}

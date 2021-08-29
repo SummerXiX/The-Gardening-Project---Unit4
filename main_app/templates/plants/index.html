@@ -2,49 +2,47 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/cat-index.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/plant-index.css' %}"/>
 {% endblock %}
 
 {% block content %}
 
 <section class="page-header">
   <h1>Plant List</h1>
-  {% comment %} <img src="{% static 'images/cool-cat.svg' %}" alt="A cool cat" />
-  <img src="{% static 'images/happy-cat.svg' %}" alt="A happy cat" />
-  <img src="{% static 'images/teacup-cat.svg' %}" alt="A cat in a teacup" />
-  <img src="{% static 'images/cat-in-box.svg' %}" alt="A cat in a box" /> {% endcomment %}
+
 </section>
 
 <section class="card-container">
   {% for plant in plants %}
     <div class="card">
       <a href="{% url 'plants_details' plant.id %}">
-      <div class="card-content">
-        <div class="card-img-container">
-          {% if plant.photo.url %}
-          <img 
-            src="{{plant.photo.url}}" 
-            alt="A photo of {{plant.name}}"
-            class="usr-img"
-          >
-          {% else %}
-         <img 
-            src="{% static 'images/sk8r-boi-cat.svg' %}" 
-            alt="A picture"
-          >
-    {% endif %}
-  </div>
-        <h2 class="card-title">{{ plant.type }}</h2>
-        {% if plant.time > 0 %}
-          <p>A {{ plant.time }} year old {{ plant.type }}</p>
-        {% else %}
-          <p>A {{ plant.type }} kitten.</p>
-        {% endif %}
-        <p><small>{{ plant.description }}</small></p>
-      </div>
+        <div class="card-content">
+          <div class="card-img-container">
+            {% if plant.photo.url %}
+              <img 
+                src="{{plant.photo.url}}" 
+                alt="A photo of {{plant.name}}"
+                class="usr-img"
+                width="200" 
+                height="200"
+              >
+            {% else %}
+              <img 
+                src="{% static 'images/place-holder.svg' %}" 
+                alt="A place-holder"
+              >
+            {% endif %}
+          </div>
+          <h2 class="card-title">{{ plant.type }}</h2>
+            <p>A Plant Baby</p>
+          <p><small>Click to view care instructions</small></p>
+        </div>
       </a>
     </div>
   {% endfor %}
 </section>
+
+
+
 
 {% endblock %}

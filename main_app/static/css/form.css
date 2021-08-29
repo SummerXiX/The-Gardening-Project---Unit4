@@ -2,20 +2,27 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  color:rgb(10,31,25);
+}
+
+page-header {
+  margin-top: 20px;
 }
 
 table {
   padding: 0 40px;
-  width: 75%;
+  width: 70%;
   border-spacing: 0 20px;
+  margin-left: 18%;
+  margin-top: 20px;
 }
 
 th {
   text-align: left;
   padding: 6px 20px 0 0;
-  font-weight: normal;
   vertical-align: top;
   font-size: var(--font-reg);
+  font-weight: 400;
 }
 
 td {
@@ -35,5 +42,6 @@ td > textarea {
 
 .btn {
   align-self: flex-end;
-  margin-right: 40px;
+  margin-right: 195px;
+  margin-top: 20px;
 }

@@ -29,16 +29,16 @@ body {
   min-height: 100vh;
   --nav-bg: rgb(171, 189, 128);
   --nav-bg-ff: rgb(207, 205, 167);
-  --borders: rgb(113, 128, 93) solid 2px;
-  --text-color: rgb(17, 20, 17);
-  --link-hover-color: rgb(16, 56, 158);
+  --borders: rgb(3,237,195) solid 2px;
+  --text-color: rgb(12,43,38);
+  --link-hover-color:rgb(10,31,25);
   --button-bg: rgb(171, 189, 128);
-  --button-bg-hover: rgb(226, 226, 226);
-  --submit: rgb(26, 128, 0);
-  --warn: rgb(255, 102, 0);
-  --danger: rgb(220, 20, 30);
+  --button-bg-hover:rgb(207,205,167);
+  --submit:rgb(12,43,38, 0.8);
+  --warn: rgb(11,44,27);
+  --danger: rgb(11,44,27);
   --secondary: rgb(57, 57, 57);
-  --card-box-shadow: 5px 5px 6px -1px #aaa;
+  --card-box-shadow: 5px 5px 6px -1px rgb(207,205,167);
   --font-xtreme: 4.2rem;
   --font-xxl: 3.6rem;
   --font-xl: 2.4rem;
@@ -98,14 +98,15 @@ nav li {
 .page-header {
   display: flex;
   align-items: center;
-  margin: 20px;
+  margin: 10px;
+  color: rgb(11,44,27);
 }
 
 .btn {
   font-size: var(--font-reg);
-  padding: 8px 8px;
-  border-radius: 8px;
+  padding: 7px 7px;
   border-width: 2px;
+  border-radius: 5px;
   border-style: solid;
   text-decoration: none;
   background-color: var(--button-bg);
@@ -113,6 +114,7 @@ nav li {
   cursor: pointer;
   font-family: inherit;
   margin-right: 10px;
+  border-color: rgb(3,237,195);
 }
 
 .btn:hover {
@@ -122,6 +124,7 @@ nav li {
 .submit {
   color: var(--submit);
   border-color: var(--submit);
+  margin-right: 100px;
 }
 
 .secondary {
@@ -141,7 +144,8 @@ nav li {
 
 .page-header h1 {
   font-size: var(--font-xl);
-  margin: 0;
+  margin-top: 20px;
+  margin-left: 60px;
 }
 
 .page-header img:first-of-type {
@@ -250,7 +254,7 @@ nav li {
 
     nav,
     .header-logo-container {
-      background: rgba(104, 197, 248, 0.6);
+      background: rgb(171,189,128);
       -webkit-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
     }

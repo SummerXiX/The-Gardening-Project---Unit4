@@ -13,11 +13,11 @@
 </head>
 <body>
     <header>
-        <div class="header-logo-container">
+        {% comment %} <div class="header-logo-container">
             <a href="{% url 'plants_index' %}"">
             <img src="" alt="A logo">
             </a>
-        </div>
+        </div> {% endcomment %}
         <nav>
         <ul>
           {% if user.is_authenticated %}

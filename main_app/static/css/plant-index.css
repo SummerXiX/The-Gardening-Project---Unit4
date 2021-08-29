@@ -1,6 +1,8 @@
-
+body{
+  background-image: url("images/background-img1.png");
+}
 .card-container {
-  padding: 0 30px;
+  padding: 0 10px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -9,31 +11,27 @@
 .card {
   width: 275px;
   margin: 10px;
-  border: var(--borders);
-  box-shadow: var(--card-box-shadow);
+  border: rgb(113,128,93) solid 5px;
+  box-shadow: 5px 5px 6px -1px #AAA;
 }
 
 .card-content {
   padding: 10px;
-  width: 100%;
-}
-
-.usr-img {
-  width: 100%;
-  border-radius: var(--card-border-radius);
+  width: 255px;
 }
 
 .card > a {
   text-decoration: none;
-  color: var(--text-color);
+  color: rgb(12,43,38);
 }
 
 .card h2 {
   margin: 10px 0;
-  font-size: var(--font-xl);
+  color:rgb(113,128,93);
 }
 
 .card p {
   margin: 5px 0;
-  font-size: var(--font-reg);
+  color:rgb(135,75,81);
+  font-size: small;
 }

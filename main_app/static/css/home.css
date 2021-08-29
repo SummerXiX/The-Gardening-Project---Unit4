@@ -19,6 +19,13 @@ main > section {
   flex-direction: column;
 }
 
+.background-lottie{
+  position: absolute;
+  z-index: -100;
+  top:0;
+  left: 0;
+}
+
 .header-logo-container {
   display: none;
 }

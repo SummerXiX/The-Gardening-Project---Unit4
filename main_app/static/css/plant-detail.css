@@ -1,5 +1,5 @@
 .plant-container {
-  padding: 35px 30px;
+  padding-top: 35px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,79 +9,87 @@
 .plant-img {
   width: 75%;
   max-width: 350px;
-}
-
-.usr-img {
-  width: 100%;
-  border-radius: var(--card-border-radius);
-}
-
-.plant-details {
-  width: 98%;
+  margin-left: 385px;
 }
 
 .plant-actions {
   margin-top: 20px;
+  height: auto;
 }
 
-.plant-container {
+.caring-container {
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
+  padding-top: 40px;
   align-items: center;
 }
 
 .subsection-title {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 0px;
 }
 
-.subsection-content {
+.subsection-section {
   margin: 0 8px;
 }
 
 
-.color-block {
-  opacity: 0.8;
-  height: 25px;
-  width: 25px;
-  margin-right: 10px;
+.uncared,
+.cared,
+.subsection-content {
+  margin: 0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.uncared, .subsection-content{
+  color: rgb(135,75,81);
+}
+
+.subsection-content {
+  margin-top: 12px;
+}
+
+
+.cared {
+  color: green;
 }
 
 .plant-details h1 {
-  font-size: var(--font-xxl);
+  font-size: 24px;
   margin: 15px 0 3px;
 }
 
 .plant-details h2 {
-  font-size: var(--font-xl);
   margin: 0 0 10px;
-  margin-top: 0;
+  margin-top: 15px;
   margin-bottom: 10px;
+  font-size:18px;
 }
 
 .plant-details h3 {
-  margin: 20px 0 10px;
-  font-size: var(--font-l);
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size:12px;
+  font-style: italic;
 }
 
 .plant-details p {
-  font-size: var(--font-reg);
   margin: 5px 0;
 }
 
-.plant-container > section {
-  width: 80%;
-  min-width: 360px;
-  border: var(--borders);
-  border-radius: var(--card-border-radius);
+.caring-container > section {
+  width: 41%;
+  min-width: 315px;
+  border: rgb(113,128,93) solid 5px;
+  border-radius: 6px;
   padding: 10px;
-  box-shadow: var(--card-box-shadow);
+  box-shadow: 5px 5px 6px -1px #AAA;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .subsection-title img {
@@ -93,80 +101,48 @@
   margin-left: 16px;
 }
 
-.subsection-content p,
-.subsection-content input,
-.subsection-content select {
-  font-size: var(--font-l);
+.carings h2 {
+  font-size: 15px;
 }
 
-.subsection-content input,
-.subsection-content select {
+.carings h3{
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.subsection-section p,
+.subsection-section input,
+.subsection-section select,
+.subsection-content {
+  font-size: 1.3rem;
+}
+
+.subsection-section input,
+.subsection-section select,
+.subsection-content {
   margin-left: 5px;
   padding: 3px;
 }
 
-.feedings table {
+.carings table {
   width: calc(100% - 16px);
   text-align: left;
   border-collapse: collapse;
   margin: 0 8px;
 }
 
-.feedings td {
+.carings td {
   padding: 8px 5px;
-  font-size: var(--font-reg);
 }
 
-.feedings th {
-  font-size: var(--font-l);
+.carings th {
+  font-size: 1.1rem;
   padding: 5px 5px 0;
-  border-bottom: rgb(36, 116, 248) solid 2px;
+  border-bottom: rgb(36, 116, 248) solid 2px;;
 }
 
-.feedings tr:nth-child(even) {
+.carings  tr:nth-child(even) {
   background-color: #f3f3fd;
-}
-
-#file-input {
-  overflow: hidden;
-  position: absolute;
-  width: 0.1px;
-  height: 0.1px;
-}
-
-#file-name {
-  margin-bottom: 10px;
-}
-
-@media only screen and (min-width: 768px) {
-  .plant-container {
-    padding: 35px 30px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-  }
-
-  .plant-img {
-    width: 25%;
-    max-width: 250px;
-    margin-right: 25px;
-  }
-
-  .plant-container {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-  }
-
-  .plant-container > section {
-    width: 45%;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .plant-container {
-    padding: 0 40px;
-  }
 }
 
 .usr-img {
@@ -186,4 +162,28 @@
 
 #file-name {
   margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .plant-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .plant-img {
+    width: 20%;
+    max-width: 200px;
+    margin-right: 25px;
+  }
+
+  .carings-container {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .carings-container > section {
+    width: 42.5%;
+  }
 }
