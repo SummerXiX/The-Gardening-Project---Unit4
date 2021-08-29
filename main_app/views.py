@@ -32,7 +32,7 @@ def plants_details(request, plant_id):
   caring_form = CaringForm()
   return render(request, "plants/detail.html", { 
     "plant": plant, 
-  "caring_form": caring_form
+    "caring_form": caring_form
   })
 
 class PlantCreate(LoginRequiredMixin, CreateView):
