@@ -135,10 +135,11 @@
   padding: 8px 5px;
 }
 
-.carings th {
+.carings, tr, th {
   font-size: 1.1rem;
   padding: 5px 5px 0;
-  border-bottom: rgb(36, 116, 248) solid 2px;;
+  border-bottom: rgb(171,189,128) solid 2px;
+  font-size: 1.3rem;
 }
 
 .carings  tr:nth-child(even) {

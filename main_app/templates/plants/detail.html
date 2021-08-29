@@ -84,13 +84,13 @@
       <button type="submit" class="btn submit">Add a Session</button>
     </form>
     <h3> Past Sessions </h3>
-    {% if plant.caring_set.all.count %}
+    {% if plant.gardening_set.all.count %}
       <table>
         <thead>
           <tr><th>Date</th><th>Session</th></tr>
         </thead>
         <tbody>
-          {% for caring in plant.caring_set.all %}
+          {% for caring in plant.gardening_set.all %}
             <tr>
               <td>{{ caring.date }}</td>
               <td>{{ caring.get_care_display }}</td>
